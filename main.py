@@ -1,22 +1,27 @@
-def test_math_operations():
-    math_operations = MathOperations()
+class X:
+    def z(self, x, y):
+        if y == 0:
+            raise ValueError("No se puede dividir por cero.")
+        return x * y if y != 0 else x / y
 
-    # Prueba de multiplicación
-    result = math_operations.multiply_or_divide(10, 2)
-    print(f"Test Multiplicación: 10 * 2 = {result}")
-    assert result == 20, "Error: La multiplicación no funcionó como se esperaba."
 
-    # Prueba de división
-    result = math_operations.multiply_or_divide(10, 5)
-    print(f"Test División: 10 / 5 = {result}")
-    assert result == 2, "Error: La división no funcionó como se esperaba."
-
-    # Prueba de división por cero
+def main():
     try:
-        result = math_operations.multiply_or_divide(10, 0)
-        print(f"Test División por cero: 10 / 0 = {result}")
+        x = float(input("Ingresa el valor de x: "))
+        y = float(input("Ingresa el valor de y: "))
+
+        operacion = X()
+        resultado = operacion.z(x, y)
+
+        print(f"El resultado de la operación es: {resultado}")
+
     except ValueError as e:
-        print(f"Test División por cero: {e}")
+        print(f"Error: {e}")
+    except ZeroDivisionError:
+        print("Error: División por cero no permitida.")
+    except Exception as e:
+        print(f"Ocurrió un error: {e}")
+
 
 if __name__ == "__main__":
-    test_math_operations()
+    main()
